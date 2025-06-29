@@ -36,27 +36,31 @@ def ExpandSpill(map):
                         map[x + 1][y] = a + 1
                 
 def main():
-    width = 420
-    height = 420
-    cellAmount = 21
+    width = 800
+    height = 800
+    cellAmount = 40
+    cellHeight = height/cellAmount
+    cellWidth = width/cellAmount
 
     screen = pygame.display.set_mode((width, height))
     running = True
     map = ZeroField(cellAmount)
 
-    map[15][15] = 1
-
     map[5][5] = 1
+
+    map[5][25] = 1
+
+    map[25][25] = 1
     while running:
         pygame.display.flip()
         print(map)
-        for y in range(cellAmount):
-             for x in range(cellAmount):
+        for y in range(len(map)):
+             for x in range(len(map[y])):
                 if(map[x][y] == 0):
-                    pygame.draw.rect(screen, (0, 0, 0), (x * cellAmount - 1, y * cellAmount - 1, 20, 20))
+                    pygame.draw.rect(screen, (0, 0, 0), (x * cellHeight - 1, y * cellWidth - 1, cellHeight, cellWidth))
                 else:
-                    tup = 255 - 10 * map[x][y]
-                    pygame.draw.rect(screen, (tup, tup, tup), (x * cellAmount - 1, y * cellAmount - 1, 20, 20))
+                    tup = 255 - 5 * map[x][y]
+                    pygame.draw.rect(screen, (tup, tup, tup), (x * cellHeight - 1, y * cellWidth - 1, cellHeight, cellWidth))
 
         for events in pygame.event.get():
                 if events.type == pygame.QUIT:
