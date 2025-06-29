@@ -26,13 +26,13 @@ def ExpandSpill(map):
     for y in range(0, len(map)):
          for x in range(0, len(map[y])):      
                 if(map[x][y] == a):
-                    if(y < 19 and map[x][y + 1] == 0):
+                    if(y < len(map) - 1 and map[x][y + 1] == 0):
                         map[x][y + 1] = a + 1
                     if(y > 0 and map[x][y - 1] == 0):
                         map[x][y - 1] = a + 1
                     if(x > 0 and map[x - 1][y] == 0):
                         map[x - 1][y] = a + 1
-                    if(x < 19 and map[x + 1][y] == 0):
+                    if(x < len(map[y]) - 1 and map[x + 1][y] == 0):
                         map[x + 1][y] = a + 1
                 
 def main():
