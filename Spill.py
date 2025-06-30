@@ -46,11 +46,25 @@ def main():
     running = True
     map = ZeroField(cellAmount)
 
-    map[5][5] = 1
+    map[5][30] = 1
 
-    map[5][25] = 1
+    map[30][22] = -1
+    map[30][23] = -1
+    map[30][24] = -1
+    map[30][25] = -1
+    map[30][26] = -1
+    map[30][27] = -1
+    map[30][28] = -1
+    map[30][29] = -1
+    map[30][30] = -1
+    map[30][31] = -1
+    map[30][32] = -1
+    map[30][33] = -1
+    map[30][34] = -1
+    map[30][35] = -1
+    map[30][36] = -1
+    map[30][37] = -1
 
-    map[25][25] = 1
     while running:
         pygame.display.flip()
         print(map)
@@ -58,6 +72,8 @@ def main():
              for x in range(len(map[y])):
                 if(map[x][y] == 0):
                     pygame.draw.rect(screen, (0, 0, 0), (x * cellHeight - 1, y * cellWidth - 1, cellHeight, cellWidth))
+                elif(map[x][y] == -1):
+                    pygame.draw.rect(screen, (200, 100, 1), (x * cellHeight - 1, y * cellWidth - 1, cellHeight, cellWidth))
                 else:
                     tup = 255 - 5 * map[x][y]
                     pygame.draw.rect(screen, (tup, tup, tup), (x * cellHeight - 1, y * cellWidth - 1, cellHeight, cellWidth))
